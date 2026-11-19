@@ -681,7 +681,7 @@
       });
       const privacyLink = document.getElementById('privacy-link');
       if (privacyLink) {
-        privacyLink.href = safeLang === 'en' ? 'privacidade.html?lang=en' : 'privacidade.html';
+        privacyLink.href = safeLang === 'en' ? 'privacidade.html?lang=en' : 'privacidade.html?lang=pt';
       }
       document.querySelectorAll('.lang-btn').forEach((btn) => {
         btn.classList.toggle('is-active', btn.getAttribute('data-lang') === safeLang);

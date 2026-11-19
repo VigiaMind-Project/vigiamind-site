@@ -65,7 +65,10 @@
     }
 
     .back-btn {
-      padding: 7px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -73,6 +76,12 @@
       text-decoration: none;
       font-size: 12.5px;
       font-weight: 600;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .back-btn:hover {
+      background: #1e293b;
+      border-color: #4f46e5;
     }
 
     .lang-switch {
@@ -272,16 +281,22 @@
       </ul>
     </section>
 
-    <footer>VigiaMind © 2026 — Privacy & Terms</footer>
+    <footer>
+      <div style="margin-bottom: 12px;">
+        <a class="back-btn js-home-link" href="index.html">← Início / Home</a>
+      </div>
+      <div>VigiaMind © 2026 — Privacy & Terms</div>
+    </footer>
   </div>
 
   <script>
     if (window.self !== window.top) {
-      const backBtn = document.querySelector('.back-btn');
-      if (backBtn) backBtn.style.display = 'none';
+      document.querySelectorAll('.back-btn').forEach((btn) => { btn.style.display = 'none'; });
     }
     const cards = Array.from(document.querySelectorAll('[data-doc-lang]'));
     const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+    const homeLinks = Array.from(document.querySelectorAll('.js-home-link, .back-btn, .brand'));
+    const backButtons = Array.from(document.querySelectorAll('.back-btn'));
 
     function applyFilter(filter) {
       cards.forEach((card) => {
@@ -290,6 +305,22 @@
       });
       buttons.forEach((btn) => {
         btn.classList.toggle('is-active', btn.getAttribute('data-filter') === filter);
+      });
+      const homeHref = filter === 'en'
+        ? 'index.html?lang=en'
+        : filter === 'pt'
+          ? 'index.html?lang=pt'
+          : 'index.html';
+      homeLinks.forEach((link) => {
+        link.href = homeHref;
+      });
+      const backLabel = filter === 'en'
+        ? '← Back to VigiaMind'
+        : filter === 'pt'
+          ? '← Voltar para a extensão'
+          : '← Início / Home';
+      backButtons.forEach((btn) => {
+        btn.textContent = backLabel;
       });
     }
 
