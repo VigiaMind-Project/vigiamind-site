@@ -190,11 +190,10 @@
         <span>VigiaMind</span>
       </a>
       <div class="controls">
-        <a class="back-btn" href="index.html">← Início / Home</a>
+        <a class="back-btn" href="index.html">← Voltar para a extensão</a>
         <div class="lang-switch" role="group" aria-label="Idioma / Language">
-          <button type="button" class="lang-btn is-active" data-filter="all">🇧🇷 + 🇺🇸 Ambos</button>
-          <button type="button" class="lang-btn" data-filter="pt">🇧🇷 Português</button>
-          <button type="button" class="lang-btn" data-filter="en">🇺🇸 English</button>
+          <button type="button" class="lang-btn is-active" data-lang="pt">🇧🇷 Português</button>
+          <button type="button" class="lang-btn" data-lang="en">🇺🇸 English</button>
         </div>
       </div>
     </header>
@@ -212,7 +211,7 @@
 
       <h3>1. Dados armazenados localmente no seu navegador</h3>
       <p>
-        Todos os monitores que você cria (nomes, URLs das páginas monitoradas, seletores CSS, histórico de valores, metas, grupos, subgrupos e preferências de idioma e tema) são armazenados <strong>exclusivamente no armazenamento local do seu navegador</strong> (<code>chrome.storage.local</code>).
+        Todos os monitores que você cria (nomes, URLs das páginas monitoradas, seletores CSS, histórico de valores, metas, grupos, subgrupos, abas personalizadas e preferências de idioma e tema) são armazenados <strong>exclusivamente no armazenamento local do seu navegador</strong> (<code>chrome.storage.local</code>).
       </p>
       <ul>
         <li>O VigiaMind <strong>não exige</strong> criação de conta, e-mail ou senha.</li>
@@ -253,7 +252,7 @@
 
       <h3>1. Data stored locally in your browser</h3>
       <p>
-        All monitors you create (item names, monitored page URLs, CSS selectors, value history, targets, groups, subgroups, and UI preferences) are stored <strong>exclusively in your browser's local storage</strong> (<code>chrome.storage.local</code>).
+        All monitors you create (item names, monitored page URLs, CSS selectors, value history, targets, groups, subgroups, custom tabs, and UI preferences) are stored <strong>exclusively in your browser's local storage</strong> (<code>chrome.storage.local</code>).
       </p>
       <ul>
         <li>VigiaMind <strong>does not</strong> require an account, email address, or login.</li>
@@ -283,9 +282,9 @@
 
     <footer>
       <div style="margin-bottom: 12px;">
-        <a class="back-btn js-home-link" href="index.html">← Início / Home</a>
+        <a class="back-btn js-home-link" href="index.html">← Voltar para a extensão</a>
       </div>
-      <div>VigiaMind © 2026 — Privacy & Terms</div>
+      <div id="footer-copy">VigiaMind © 2026 — Política de Privacidade & Termos</div>
     </footer>
   </div>
 
@@ -294,44 +293,47 @@
       document.querySelectorAll('.back-btn').forEach((btn) => { btn.style.display = 'none'; });
     }
     const cards = Array.from(document.querySelectorAll('[data-doc-lang]'));
-    const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+    const buttons = Array.from(document.querySelectorAll('[data-lang]'));
     const homeLinks = Array.from(document.querySelectorAll('.js-home-link, .back-btn, .brand'));
     const backButtons = Array.from(document.querySelectorAll('.back-btn'));
+    const footerCopy = document.getElementById('footer-copy');
 
-    function applyFilter(filter) {
+    function applyLang(lang) {
+      const safeLang = lang === 'en' ? 'en' : 'pt';
+      document.documentElement.lang = safeLang === 'en' ? 'en' : 'pt-BR';
+      document.title = safeLang === 'en'
+        ? 'VigiaMind — Privacy Policy & Terms of Use'
+        : 'VigiaMind — Política de Privacidade & Termos de Uso';
+
       cards.forEach((card) => {
-        const lang = card.getAttribute('data-doc-lang');
-        card.style.display = (filter === 'all' || filter === lang) ? '' : 'none';
+        card.style.display = card.getAttribute('data-doc-lang') === safeLang ? '' : 'none';
       });
       buttons.forEach((btn) => {
-        btn.classList.toggle('is-active', btn.getAttribute('data-filter') === filter);
+        btn.classList.toggle('is-active', btn.getAttribute('data-lang') === safeLang);
       });
-      const homeHref = filter === 'en'
-        ? 'index.html?lang=en'
-        : filter === 'pt'
-          ? 'index.html?lang=pt'
-          : 'index.html';
+
+      const homeHref = safeLang === 'en' ? 'index.html?lang=en' : 'index.html?lang=pt';
       homeLinks.forEach((link) => {
         link.href = homeHref;
       });
-      const backLabel = filter === 'en'
-        ? '← Back to VigiaMind'
-        : filter === 'pt'
-          ? '← Voltar para a extensão'
-          : '← Início / Home';
+      const backLabel = safeLang === 'en' ? '← Back to VigiaMind' : '← Voltar para a extensão';
       backButtons.forEach((btn) => {
         btn.textContent = backLabel;
       });
+      if (footerCopy) {
+        footerCopy.textContent = safeLang === 'en'
+          ? 'VigiaMind © 2026 — Privacy & Terms'
+          : 'VigiaMind © 2026 — Política de Privacidade & Termos';
+      }
     }
 
     buttons.forEach((btn) => {
-      btn.addEventListener('click', () => applyFilter(btn.getAttribute('data-filter')));
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
     });
 
     const urlLang = new URLSearchParams(window.location.search).get('lang');
-    if (urlLang === 'pt' || urlLang === 'en') {
-      applyFilter(urlLang);
-    }
+    const browserLang = (navigator.language || '').toLowerCase();
+    applyLang(urlLang === 'en' || (!urlLang && browserLang.startsWith('en')) ? 'en' : 'pt');
   </script>
 </body>
 </html>
