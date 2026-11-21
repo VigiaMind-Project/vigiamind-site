@@ -94,6 +94,9 @@
     }
 
     .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       border: none;
       background: transparent;
       color: var(--muted);
@@ -102,6 +105,20 @@
       padding: 6px 12px;
       border-radius: 999px;
       cursor: pointer;
+    }
+
+    .lang-code {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 1px 5px;
+      border-radius: 5px;
+      background: rgba(148, 163, 184, 0.16);
+      color: inherit;
+    }
+
+    .lang-btn.is-active .lang-code {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .lang-btn.is-active {
@@ -192,14 +209,14 @@
       <div class="controls">
         <a class="back-btn" href="index.html">← Voltar para a extensão</a>
         <div class="lang-switch" role="group" aria-label="Idioma / Language">
-          <button type="button" class="lang-btn is-active" data-lang="pt">🇧🇷 Português</button>
-          <button type="button" class="lang-btn" data-lang="en">🇺🇸 English</button>
+          <button type="button" class="lang-btn is-active" data-lang="pt"><span class="lang-code">PT</span><span>Português</span></button>
+          <button type="button" class="lang-btn" data-lang="en"><span class="lang-code">EN</span><span>English</span></button>
         </div>
       </div>
     </header>
 
     <section class="policy-card" data-doc-lang="pt">
-      <div class="badge">🇧🇷 Português (Brasil)</div>
+      <div class="badge">Português (Brasil)</div>
       <h1>Política de Privacidade & Termos de Uso</h1>
       <div class="updated">Última atualização: Novembro de 2026</div>
 
@@ -240,7 +257,7 @@
     </section>
 
     <section class="policy-card" data-doc-lang="en">
-      <div class="badge">🇺🇸 English</div>
+      <div class="badge">English</div>
       <h1>Privacy Policy & Terms of Use</h1>
       <div class="updated">Last updated: November 2026</div>
 
