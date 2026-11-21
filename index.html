@@ -224,6 +224,18 @@
       border-color: #bd5628;
     }
 
+    .btn-edge {
+      background: linear-gradient(135deg, #0d3b4c, #0f5666);
+      color: #ecfeff;
+      border: 1px solid #167a8a;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-edge:hover {
+      background: linear-gradient(135deg, #124c61, #156c80);
+      border-color: #2099ab;
+    }
+
     .section-heading {
       margin: 36px 0 14px;
       text-align: center;
@@ -488,13 +500,13 @@
           <div class="hero-eye-pupil" id="hero-eye-pupil"></div>
         </div>
       </div>
-      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome & Firefox</div>
+      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome, Edge & Firefox</div>
       <h1 data-i18n="heroTitle">Monitore preços e números em qualquer site</h1>
       <p class="subtitle" data-i18n="heroSub">
         Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.
       </p>
       <div class="cta-row">
-        <!-- Substitua #chrome-store-url e #firefox-addons-url pelos links reais quando publicar -->
+        <!-- Substitua #chrome-store-url, #edge-store-url e #firefox-addons-url pelos links reais quando publicar -->
         <a class="btn btn-chrome" href="#chrome-store-url" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
@@ -505,6 +517,14 @@
             <circle cx="12" cy="12" r="3.5" fill="#1A73E8"/>
           </svg>
           <span data-i18n="ctaChrome">Instalar no Chrome</span>
+        </a>
+        <a class="btn btn-edge" href="#edge-store-url" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+            <path d="M21 12.2c0-4.9-4-8.8-9-8.8-4.5 0-8.2 3.3-8.9 7.6 1.7-2.2 4.4-3.3 7.2-2.8 2.4.4 4.2 2.1 4.6 4.2.3 1.4 1.6 2.3 3.1 2.2 1.8-.1 3-1.2 3-2.4z" fill="#0EA5E9"/>
+            <path d="M4.2 15.8c1.5 3.1 4.7 5.2 8.4 5.2 3.3 0 6.2-1.7 7.8-4.3-1.8 1.3-4.3 1.5-6.6.4-1.8-.9-2.8-2.6-2.5-4.4.2-1.2.9-2.1 1.9-2.7-2-.8-4.6-.4-6.4 1.1-1.7 1.3-2.5 3-2.6 4.7z" fill="#14B8A6"/>
+          </svg>
+          <span data-i18n="ctaEdge">Instalar no Edge</span>
         </a>
         <a class="btn btn-firefox" href="#firefox-addons-url" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -712,10 +732,11 @@
     // Bilingual copy + auto-switch screenshot language (PT / EN)
     const COPY = {
       pt: {
-        pill: '100% Gratuito • Sem cadastro • Chrome & Firefox',
+        pill: '100% Gratuito • Sem cadastro • Chrome, Edge & Firefox',
         heroTitle: 'Monitore preços e números em qualquer site',
         heroSub: 'Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.',
         ctaChrome: 'Instalar no Chrome',
+        ctaEdge: 'Instalar no Edge',
         ctaFirefox: 'Instalar no Firefox',
         f1Title: 'Seleção visual com 1 clique',
         f1Desc: 'Clique em qualquer preço ou número na página e acompanhe aumentos, quedas ou metas exatas.',
@@ -753,10 +774,11 @@
         privacyLink: 'Política de Privacidade & Termos de Uso'
       },
       en: {
-        pill: '100% Free • No account needed • Chrome & Firefox',
+        pill: '100% Free • No account needed • Chrome, Edge & Firefox',
         heroTitle: 'Track prices and numbers on any website',
         heroSub: 'Monitor deals, quotes, stock counts, and targets straight from your browser with smart alerts, history charts, and local-first privacy.',
         ctaChrome: 'Add to Chrome',
+        ctaEdge: 'Add to Edge',
         ctaFirefox: 'Add to Firefox',
         f1Title: '1-click visual selection',
         f1Desc: 'Click any price or number on a webpage and track increases, drops, or exact target values.',
