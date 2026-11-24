@@ -236,6 +236,18 @@
       border-color: #2099ab;
     }
 
+    .btn-opera {
+      background: linear-gradient(135deg, #4b121c, #7a1426);
+      color: #fff1f2;
+      border: 1px solid #be123c;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-opera:hover {
+      background: linear-gradient(135deg, #5e1724, #96192f);
+      border-color: #e11d48;
+    }
+
     .section-heading {
       margin: 36px 0 14px;
       text-align: center;
@@ -500,13 +512,13 @@
           <div class="hero-eye-pupil" id="hero-eye-pupil"></div>
         </div>
       </div>
-      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome, Edge & Firefox</div>
+      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome, Edge, Firefox & Opera</div>
       <h1 data-i18n="heroTitle">Monitore preços e números em qualquer site</h1>
       <p class="subtitle" data-i18n="heroSub">
         Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.
       </p>
       <div class="cta-row">
-        <!-- Substitua #chrome-store-url, #edge-store-url e #firefox-addons-url pelos links reais quando publicar -->
+        <!-- Substitua #chrome-store-url, #edge-store-url, #firefox-addons-url e #opera-addons-url pelos links reais quando publicar -->
         <a class="btn btn-chrome" href="#chrome-store-url" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
@@ -534,6 +546,13 @@
             <path d="M8.7 8.4c-1.8 1.5-2.6 4-1.8 6.4.9 2.6 3.5 4.2 6.2 4 2.1-.2 4-1.5 4.8-3.5-1.1 1.1-2.7 1.5-4.2 1.1-1.6-.4-2.8-1.6-3.2-3.1-.3-1.1-.1-2.2.5-3.1-.8-.6-1.6-1.2-2.3-1.8z" fill="#FBBF24"/>
           </svg>
           <span data-i18n="ctaFirefox">Instalar no Firefox</span>
+        </a>
+        <a class="btn btn-opera" href="#opera-addons-url" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+            <path fill-rule="evenodd" d="M12 2.4a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 3.2c2.5 0 4.2 2.7 4.2 6.4s-1.7 6.4-4.2 6.4-4.2-2.7-4.2-6.4 1.7-6.4 4.2-6.4z" fill="#FF1B2D"/>
+          </svg>
+          <span data-i18n="ctaOpera">Instalar no Opera</span>
         </a>
       </div>
     </section>
@@ -752,12 +771,13 @@
     // Bilingual copy + auto-switch screenshot language (PT / EN)
     const COPY = {
       pt: {
-        pill: '100% Gratuito • Sem cadastro • Chrome, Edge & Firefox',
+        pill: '100% Gratuito • Sem cadastro • Chrome, Edge, Firefox & Opera',
         heroTitle: 'Monitore preços e números em qualquer site',
         heroSub: 'Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.',
         ctaChrome: 'Instalar no Chrome',
         ctaEdge: 'Instalar no Edge',
         ctaFirefox: 'Instalar no Firefox',
+        ctaOpera: 'Instalar no Opera',
         f1Title: 'Seleção visual com 1 clique',
         f1Desc: 'Clique em qualquer preço ou número na página e acompanhe aumentos, quedas ou metas exatas.',
         f2Title: 'Histórico e exportação CSV',
@@ -800,12 +820,13 @@
         privacyLink: 'Política de Privacidade & Termos de Uso'
       },
       en: {
-        pill: '100% Free • No account needed • Chrome, Edge & Firefox',
+        pill: '100% Free • No account needed • Chrome, Edge, Firefox & Opera',
         heroTitle: 'Track prices and numbers on any website',
         heroSub: 'Monitor deals, quotes, stock counts, and targets straight from your browser with smart alerts, history charts, and local-first privacy.',
         ctaChrome: 'Add to Chrome',
         ctaEdge: 'Add to Edge',
         ctaFirefox: 'Add to Firefox',
+        ctaOpera: 'Add to Opera',
         f1Title: '1-click visual selection',
         f1Desc: 'Click any price or number on a webpage and track increases, drops, or exact target values.',
         f2Title: 'Charts & CSV export',
