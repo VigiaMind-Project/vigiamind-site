@@ -179,18 +179,50 @@
     .cta-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      align-items: flex-end;
+      gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .cta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cta-status {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      line-height: 1.35;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .cta-item.is-pending .cta-status {
+      background: rgba(251, 191, 36, 0.14);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      color: #fde68a;
+    }
+
+    .cta-item:not(.is-pending) .cta-status {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      color: #6ee7b7;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 12px 20px;
+      padding: 11px 16px;
       border-radius: 12px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13.5px;
+      white-space: nowrap;
       text-decoration: none;
       transition: transform 0.15s ease, filter 0.15s ease;
     }
@@ -258,26 +290,28 @@
       filter: none;
     }
 
-    .btn-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(251, 191, 36, 0.16);
-      border: 1px solid rgba(251, 191, 36, 0.42);
-      color: #fde68a;
-      line-height: 1.3;
-      white-space: nowrap;
-    }
-
-    .btn:not(.is-pending) .btn-badge {
-      display: none;
-    }
-
     .store-review-note {
-      margin: 12px auto 0;
-      font-size: 12.5px;
-      color: var(--muted);
+      max-width: 780px;
+      margin: 16px auto 0;
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    .store-review-note strong {
+      color: #ffffff;
+    }
+
+    .store-review-note .note-highlight {
+      color: #6ee7b7;
+    }
+
+    .store-review-note .note-muted {
+      color: #cbd5e1;
     }
 
     .videos-grid {
@@ -578,17 +612,47 @@
     }
 
     .trust-box {
-      margin-top: 26px;
-      padding: 18px 20px;
+      margin: 22px auto 6px;
+      padding: 16px 20px;
       border-radius: 16px;
-      background: rgba(30, 41, 59, 0.55);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(99, 102, 241, 0.38);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       font-size: 13.5px;
       color: #cbd5e1;
     }
 
+    .trust-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: rgba(99, 102, 241, 0.16);
+      border: 1px solid rgba(129, 140, 248, 0.34);
+      color: #a5b4fc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     .trust-box strong {
-      color: #fff;
+      color: #ffffff;
+    }
+
+    @media (max-width: 520px) {
+      .trust-box {
+        padding: 14px 16px;
+        gap: 12px;
+      }
     }
 
     footer {
@@ -670,55 +734,63 @@
           <div class="hero-eye-pupil" id="hero-eye-pupil"></div>
         </div>
       </div>
-      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome, Edge, Firefox & Opera</div>
+      <div class="pill" data-i18n="pill">100% Gratuito • Sem cadastro • Chrome, Brave, Edge, Firefox & Opera</div>
       <h1 data-i18n="heroTitle">Monitore preços e números em qualquer site</h1>
       <p class="subtitle" data-i18n="heroSub">
         Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.
       </p>
       <div class="cta-row">
-        <!-- Substitua #chrome-store-url, #edge-store-url, #firefox-addons-url e #opera-addons-url pelos links reais quando publicar (o selo "Em análise" some automaticamente quando o href começar com http) -->
-        <a class="btn btn-chrome is-pending" href="#chrome-store-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
-            <path d="M3.64 6.52 A10 10 0 0 1 20.93 7.50 L12 7.50 A4.5 4.5 0 0 0 8.10 14.25 Z" fill="#EA4335"/>
-            <path d="M12 7.50 L20.93 7.50 A10 10 0 0 1 11.43 21.98 L15.90 14.25 A4.5 4.5 0 0 0 12 7.50 Z" fill="#FBBC05"/>
-            <path d="M15.90 14.25 L11.43 21.98 A10 10 0 0 1 3.64 6.52 L8.10 14.25 A4.5 4.5 0 0 0 15.90 14.25 Z" fill="#34A853"/>
-            <circle cx="12" cy="12" r="4.6" fill="#ffffff"/>
-            <circle cx="12" cy="12" r="3.5" fill="#1A73E8"/>
-          </svg>
-          <span data-i18n="ctaChrome">Instalar no Chrome</span>
-          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
-        </a>
-        <a class="btn btn-edge is-pending" href="#edge-store-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
-            <path d="M21 12.2c0-4.9-4-8.8-9-8.8-4.5 0-8.2 3.3-8.9 7.6 1.7-2.2 4.4-3.3 7.2-2.8 2.4.4 4.2 2.1 4.6 4.2.3 1.4 1.6 2.3 3.1 2.2 1.8-.1 3-1.2 3-2.4z" fill="#0EA5E9"/>
-            <path d="M4.2 15.8c1.5 3.1 4.7 5.2 8.4 5.2 3.3 0 6.2-1.7 7.8-4.3-1.8 1.3-4.3 1.5-6.6.4-1.8-.9-2.8-2.6-2.5-4.4.2-1.2.9-2.1 1.9-2.7-2-.8-4.6-.4-6.4 1.1-1.7 1.3-2.5 3-2.6 4.7z" fill="#14B8A6"/>
-          </svg>
-          <span data-i18n="ctaEdge">Instalar no Edge</span>
-          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
-        </a>
-        <a class="btn btn-firefox is-pending" href="#firefox-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
-            <path d="M19.8 8.3c-.7-2-2.2-3.7-4-4.5.7 1.1.9 2.2.6 3.3-1.1-.8-2.6-1.1-4.1-.9.7-.7 1.1-1.6 1-2.6-1.9.7-3.4 2-4.4 3.7-.3-.7-.3-1.6 0-2.4C5.4 6.5 3.6 9.3 3.6 12.6c0 4.6 3.8 8.4 8.4 8.4s8.4-3.8 8.4-8.4c0-1.6-.2-3-.6-4.3z" fill="#F97316"/>
-            <circle cx="12.4" cy="13.1" r="4.6" fill="#6D28D9"/>
-            <path d="M8.7 8.4c-1.8 1.5-2.6 4-1.8 6.4.9 2.6 3.5 4.2 6.2 4 2.1-.2 4-1.5 4.8-3.5-1.1 1.1-2.7 1.5-4.2 1.1-1.6-.4-2.8-1.6-3.2-3.1-.3-1.1-.1-2.2.5-3.1-.8-.6-1.6-1.2-2.3-1.8z" fill="#FBBF24"/>
-          </svg>
-          <span data-i18n="ctaFirefox">Instalar no Firefox</span>
-          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
-        </a>
-        <a class="btn btn-opera is-pending" href="#opera-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
-            <path fill-rule="evenodd" d="M12 2.4a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 3.2c2.5 0 4.2 2.7 4.2 6.4s-1.7 6.4-4.2 6.4-4.2-2.7-4.2-6.4 1.7-6.4 4.2-6.4z" fill="#FF1B2D"/>
-          </svg>
-          <span data-i18n="ctaOpera">Instalar no Opera</span>
-          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
-        </a>
+        <!-- Substitua #edge-store-url, #firefox-addons-url e #opera-addons-url pelos links reais quando publicar (o selo acima muda automaticamente de "Em análise" para "Disponível") -->
+        <div class="cta-item">
+          <span class="cta-status" data-i18n="ctaAvailableBadge">Disponível</span>
+          <a class="btn btn-chrome" href="https://chrome.google.com/webstore/detail/epppjkfdacfoonlmkpgdfghnnflfbijm" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+              <path d="M3.64 6.52 A10 10 0 0 1 20.93 7.50 L12 7.50 A4.5 4.5 0 0 0 8.10 14.25 Z" fill="#EA4335"/>
+              <path d="M12 7.50 L20.93 7.50 A10 10 0 0 1 11.43 21.98 L15.90 14.25 A4.5 4.5 0 0 0 12 7.50 Z" fill="#FBBC05"/>
+              <path d="M15.90 14.25 L11.43 21.98 A10 10 0 0 1 3.64 6.52 L8.10 14.25 A4.5 4.5 0 0 0 15.90 14.25 Z" fill="#34A853"/>
+              <circle cx="12" cy="12" r="4.6" fill="#ffffff"/>
+              <circle cx="12" cy="12" r="3.5" fill="#1A73E8"/>
+            </svg>
+            <span data-i18n="ctaChrome">Chrome e compatíveis</span>
+          </a>
+        </div>
+        <div class="cta-item is-pending">
+          <span class="cta-status" data-i18n="ctaReviewBadge">Em análise</span>
+          <a class="btn btn-edge is-pending" href="#edge-store-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+              <path d="M21 12.2c0-4.9-4-8.8-9-8.8-4.5 0-8.2 3.3-8.9 7.6 1.7-2.2 4.4-3.3 7.2-2.8 2.4.4 4.2 2.1 4.6 4.2.3 1.4 1.6 2.3 3.1 2.2 1.8-.1 3-1.2 3-2.4z" fill="#0EA5E9"/>
+              <path d="M4.2 15.8c1.5 3.1 4.7 5.2 8.4 5.2 3.3 0 6.2-1.7 7.8-4.3-1.8 1.3-4.3 1.5-6.6.4-1.8-.9-2.8-2.6-2.5-4.4.2-1.2.9-2.1 1.9-2.7-2-.8-4.6-.4-6.4 1.1-1.7 1.3-2.5 3-2.6 4.7z" fill="#14B8A6"/>
+            </svg>
+            <span data-i18n="ctaEdge">Instalar no Edge</span>
+          </a>
+        </div>
+        <div class="cta-item is-pending">
+          <span class="cta-status" data-i18n="ctaReviewBadge">Em análise</span>
+          <a class="btn btn-firefox is-pending" href="#firefox-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+              <path d="M19.8 8.3c-.7-2-2.2-3.7-4-4.5.7 1.1.9 2.2.6 3.3-1.1-.8-2.6-1.1-4.1-.9.7-.7 1.1-1.6 1-2.6-1.9.7-3.4 2-4.4 3.7-.3-.7-.3-1.6 0-2.4C5.4 6.5 3.6 9.3 3.6 12.6c0 4.6 3.8 8.4 8.4 8.4s8.4-3.8 8.4-8.4c0-1.6-.2-3-.6-4.3z" fill="#F97316"/>
+              <circle cx="12.4" cy="13.1" r="4.6" fill="#6D28D9"/>
+              <path d="M8.7 8.4c-1.8 1.5-2.6 4-1.8 6.4.9 2.6 3.5 4.2 6.2 4 2.1-.2 4-1.5 4.8-3.5-1.1 1.1-2.7 1.5-4.2 1.1-1.6-.4-2.8-1.6-3.2-3.1-.3-1.1-.1-2.2.5-3.1-.8-.6-1.6-1.2-2.3-1.8z" fill="#FBBF24"/>
+            </svg>
+            <span data-i18n="ctaFirefox">Instalar no Firefox</span>
+          </a>
+        </div>
+        <div class="cta-item is-pending">
+          <span class="cta-status" data-i18n="ctaReviewBadge">Em análise</span>
+          <a class="btn btn-opera is-pending" href="#opera-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
+              <path fill-rule="evenodd" d="M12 2.4a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 3.2c2.5 0 4.2 2.7 4.2 6.4s-1.7 6.4-4.2 6.4-4.2-2.7-4.2-6.4 1.7-6.4 4.2-6.4z" fill="#FF1B2D"/>
+            </svg>
+            <span data-i18n="ctaOpera">Instalar no Opera</span>
+          </a>
+        </div>
       </div>
-      <p class="store-review-note" id="store-review-note" data-i18n="storeReviewNote">
-        A extensão já foi enviada para revisão nas lojas oficiais e estará disponível para download assim que cada loja aprovar.
+      <p class="store-review-note" id="store-review-note" data-i18n="storeReviewNoteHtml">
+        <strong class="note-highlight">Usa Brave, Edge, Opera, Vivaldi ou Arc?</strong> Você já pode instalar agora mesmo pelo botão <strong>Chrome e compatíveis</strong> acima (todos aceitam a Chrome Web Store). <span class="note-muted">As lojas próprias de Edge, Firefox e Opera seguem em análise.</span>
       </p>
     </section>
 
@@ -766,6 +838,15 @@
         <p data-i18n="f6Desc">Ative sugestões de cupons para lojas compatíveis quando quiser, sem poluir sua navegação.</p>
       </article>
     </section>
+
+    <div class="trust-box">
+      <div class="trust-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div class="trust-content" data-i18n="trustHtml">
+        <strong>Privacidade e transparência:</strong> <strong>não coletamos seus dados nem injetamos scripts passivamente nos sites que você visita</strong> — seus monitores, URLs e histórico ficam salvos apenas localmente no seu navegador (a loja exibe o aviso padrão de acesso a sites apenas para você poder monitorar qualquer página sob demanda). A extensão é gratuita e pode usar links de afiliado somente quando você clica no botão de abrir loja dentro da extensão, sem custo adicional.
+      </div>
+    </div>
 
     <section id="videos-section">
       <div class="section-heading">
@@ -899,10 +980,6 @@
       </div>
     </section>
 
-    <div class="trust-box" data-i18n="trustHtml">
-      <strong>Privacidade e transparência:</strong> seus monitores, URLs e histórico ficam armazenados apenas localmente no navegador. A extensão é gratuita e pode usar links de afiliado apenas quando você clica no botão de abrir loja dentro da extensão, sem custo adicional.
-    </div>
-
     <footer>
       <span>VigiaMind © 2026 · <a href="mailto:vigiamindsuport@gmail.com">vigiamindsuport@gmail.com</a></span>
       <span>
@@ -979,15 +1056,16 @@
     // Bilingual copy + auto-switch screenshot language (PT / EN)
     const COPY = {
       pt: {
-        pill: '100% Gratuito • Sem cadastro • Chrome, Edge, Firefox & Opera',
+        pill: '100% Gratuito • Sem cadastro • Chrome, Brave, Edge, Firefox & Opera',
         heroTitle: 'Monitore preços e números em qualquer site',
         heroSub: 'Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.',
-        ctaChrome: 'Instalar no Chrome',
+        ctaChrome: 'Chrome e compatíveis',
         ctaEdge: 'Instalar no Edge',
         ctaFirefox: 'Instalar no Firefox',
         ctaOpera: 'Instalar no Opera',
         ctaReviewBadge: 'Em análise',
-        storeReviewNote: 'A extensão já foi enviada para revisão nas lojas oficiais e estará disponível para download assim que cada loja aprovar.',
+        ctaAvailableBadge: 'Disponível',
+        storeReviewNoteHtml: '<strong class="note-highlight">Usa Brave, Edge, Opera, Vivaldi ou Arc?</strong> Você já pode instalar agora mesmo pelo botão <strong>Chrome e compatíveis</strong> acima (todos aceitam a Chrome Web Store). <span class="note-muted">As lojas próprias de Edge, Firefox e Opera seguem em análise.</span>',
         videosTitle: 'Vídeos de demonstração',
         videosSub: 'Assista ao resumo rápido ou à apresentação completa passo a passo.',
         vQuickTag: 'Demo rápida',
@@ -1035,19 +1113,20 @@
         s8Step: 'Bônus',
         s8Title: 'Cupons recomendados ao abrir a loja',
         s8Desc: 'Ao clicar para abrir o link pela extensão, veja cupons compatíveis com 1 clique.',
-        trustHtml: '<strong>Privacidade e transparência:</strong> seus monitores, URLs e histórico ficam armazenados apenas localmente no navegador. A extensão é gratuita e pode usar links de afiliado apenas quando você clica no botão de abrir loja dentro da extensão, sem custo adicional.',
+        trustHtml: '<strong>Privacidade e transparência:</strong> <strong>não coletamos seus dados nem injetamos scripts passivamente nos sites que você visita</strong> — seus monitores, URLs e histórico ficam salvos apenas localmente no seu navegador (a loja exibe o aviso padrão de acesso a sites apenas para você poder monitorar qualquer página sob demanda). A extensão é gratuita e pode usar links de afiliado somente quando você clica no botão de abrir loja dentro da extensão, sem custo adicional.',
         privacyLink: 'Política de Privacidade & Termos de Uso'
       },
       en: {
-        pill: '100% Free • No account needed • Chrome, Edge, Firefox & Opera',
+        pill: '100% Free • No account needed • Chrome, Brave, Edge, Firefox & Opera',
         heroTitle: 'Track prices and numbers on any website',
         heroSub: 'Monitor deals, quotes, stock counts, and targets straight from your browser with smart alerts, history charts, and local-first privacy.',
-        ctaChrome: 'Add to Chrome',
+        ctaChrome: 'Chrome & compatible browsers',
         ctaEdge: 'Add to Edge',
         ctaFirefox: 'Add to Firefox',
         ctaOpera: 'Add to Opera',
         ctaReviewBadge: 'In review',
-        storeReviewNote: 'Submitted to the official browser stores — downloads will unlock automatically as each store approves.',
+        ctaAvailableBadge: 'Available',
+        storeReviewNoteHtml: '<strong class="note-highlight">Using Brave, Edge, Opera, Vivaldi, or Arc?</strong> You can install right now via the <strong>Chrome &amp; compatible browsers</strong> button above (all support the Chrome Web Store). <span class="note-muted">Native Edge, Firefox, and Opera store listings are currently in review.</span>',
         videosTitle: 'Demo videos',
         videosSub: 'Watch the quick overview or the complete step-by-step walkthrough.',
         vQuickTag: 'Quick demo',
@@ -1095,7 +1174,7 @@
         s8Step: 'Bonus',
         s8Title: 'Store coupons when opening links',
         s8Desc: 'View matching store coupons and copy promo codes in 1 click from the extension.',
-        trustHtml: '<strong>Privacy & transparency:</strong> your monitors, URLs, and history stay locally in your browser. VigiaMind is free and may use affiliate links only when you actively click to open a partner store from the extension, at no extra cost.',
+        trustHtml: '<strong>Privacy & transparency:</strong> <strong>we do not collect your data or passively inject scripts on the websites you visit</strong> — your monitors, URLs, and history stay strictly local in your browser (browser stores show the standard site-access prompt solely so you can track any page on demand). VigiaMind is free and may use affiliate links only when you actively click to open a partner store from inside the extension, at no extra cost.',
         privacyLink: 'Privacy Policy & Terms of Use'
       }
     };
@@ -1107,7 +1186,7 @@
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
         if (!dict[key]) return;
-        if (key === 'trustHtml') {
+        if (key === 'trustHtml' || key === 'storeReviewNoteHtml') {
           el.innerHTML = dict[key];
         } else {
           el.textContent = dict[key];
@@ -1138,7 +1217,15 @@
       storeButtons.forEach((btn) => {
         const href = (btn.getAttribute('href') || '').trim();
         const isPending = !href || href.startsWith('#');
+        const item = btn.closest('.cta-item');
+        const statusEl = item ? item.querySelector('.cta-status') : null;
         btn.classList.toggle('is-pending', isPending);
+        if (item) {
+          item.classList.toggle('is-pending', isPending);
+        }
+        if (statusEl) {
+          statusEl.setAttribute('data-i18n', isPending ? 'ctaReviewBadge' : 'ctaAvailableBadge');
+        }
         if (isPending) {
           anyPending = true;
           btn.setAttribute('aria-disabled', 'true');
