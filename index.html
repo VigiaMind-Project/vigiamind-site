@@ -248,6 +248,164 @@
       border-color: #e11d48;
     }
 
+    .btn.is-pending {
+      opacity: 0.86;
+      cursor: default;
+    }
+
+    .btn.is-pending:hover {
+      transform: none;
+      filter: none;
+    }
+
+    .btn-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.16);
+      border: 1px solid rgba(251, 191, 36, 0.42);
+      color: #fde68a;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .btn:not(.is-pending) .btn-badge {
+      display: none;
+    }
+
+    .store-review-note {
+      margin: 12px auto 0;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #070b14;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-fallback-poster {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: #070b14;
+      overflow: hidden;
+    }
+
+    .video-fallback-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .video-fallback-poster:hover img {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    .video-play-btn {
+      position: absolute;
+      width: 64px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(220, 38, 38, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+    }
+
+    .video-play-btn::after {
+      content: "";
+      border-style: solid;
+      border-width: 9px 0 9px 16px;
+      border-color: transparent transparent transparent #ffffff;
+      margin-left: 3px;
+    }
+
+    .video-meta {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .video-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #93c5fd;
+      margin-bottom: 2px;
+    }
+
+    .video-meta h3 {
+      margin: 0;
+      font-size: 15.5px;
+    }
+
+    .video-meta p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .video-ext-link {
+      margin-top: 8px;
+      align-self: flex-start;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .video-ext-link:hover {
+      text-decoration: underline;
+    }
+
     .section-heading {
       margin: 36px 0 14px;
       text-align: center;
@@ -518,8 +676,8 @@
         Acompanhe promoções, cotações, estoques e metas direto no seu navegador, com alertas inteligentes, gráficos de histórico e privacidade local.
       </p>
       <div class="cta-row">
-        <!-- Substitua #chrome-store-url, #edge-store-url, #firefox-addons-url e #opera-addons-url pelos links reais quando publicar -->
-        <a class="btn btn-chrome" href="#chrome-store-url" target="_blank" rel="noopener noreferrer">
+        <!-- Substitua #chrome-store-url, #edge-store-url, #firefox-addons-url e #opera-addons-url pelos links reais quando publicar (o selo "Em análise" some automaticamente quando o href começar com http) -->
+        <a class="btn btn-chrome is-pending" href="#chrome-store-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
             <path d="M3.64 6.52 A10 10 0 0 1 20.93 7.50 L12 7.50 A4.5 4.5 0 0 0 8.10 14.25 Z" fill="#EA4335"/>
@@ -529,16 +687,18 @@
             <circle cx="12" cy="12" r="3.5" fill="#1A73E8"/>
           </svg>
           <span data-i18n="ctaChrome">Instalar no Chrome</span>
+          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
         </a>
-        <a class="btn btn-edge" href="#edge-store-url" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-edge is-pending" href="#edge-store-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
             <path d="M21 12.2c0-4.9-4-8.8-9-8.8-4.5 0-8.2 3.3-8.9 7.6 1.7-2.2 4.4-3.3 7.2-2.8 2.4.4 4.2 2.1 4.6 4.2.3 1.4 1.6 2.3 3.1 2.2 1.8-.1 3-1.2 3-2.4z" fill="#0EA5E9"/>
             <path d="M4.2 15.8c1.5 3.1 4.7 5.2 8.4 5.2 3.3 0 6.2-1.7 7.8-4.3-1.8 1.3-4.3 1.5-6.6.4-1.8-.9-2.8-2.6-2.5-4.4.2-1.2.9-2.1 1.9-2.7-2-.8-4.6-.4-6.4 1.1-1.7 1.3-2.5 3-2.6 4.7z" fill="#14B8A6"/>
           </svg>
           <span data-i18n="ctaEdge">Instalar no Edge</span>
+          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
         </a>
-        <a class="btn btn-firefox" href="#firefox-addons-url" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-firefox is-pending" href="#firefox-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
             <path d="M19.8 8.3c-.7-2-2.2-3.7-4-4.5.7 1.1.9 2.2.6 3.3-1.1-.8-2.6-1.1-4.1-.9.7-.7 1.1-1.6 1-2.6-1.9.7-3.4 2-4.4 3.7-.3-.7-.3-1.6 0-2.4C5.4 6.5 3.6 9.3 3.6 12.6c0 4.6 3.8 8.4 8.4 8.4s8.4-3.8 8.4-8.4c0-1.6-.2-3-.6-4.3z" fill="#F97316"/>
@@ -546,15 +706,20 @@
             <path d="M8.7 8.4c-1.8 1.5-2.6 4-1.8 6.4.9 2.6 3.5 4.2 6.2 4 2.1-.2 4-1.5 4.8-3.5-1.1 1.1-2.7 1.5-4.2 1.1-1.6-.4-2.8-1.6-3.2-3.1-.3-1.1-.1-2.2.5-3.1-.8-.6-1.6-1.2-2.3-1.8z" fill="#FBBF24"/>
           </svg>
           <span data-i18n="ctaFirefox">Instalar no Firefox</span>
+          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
         </a>
-        <a class="btn btn-opera" href="#opera-addons-url" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-opera is-pending" href="#opera-addons-url" target="_blank" rel="noopener noreferrer" aria-disabled="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" fill="#ffffff"/>
             <path fill-rule="evenodd" d="M12 2.4a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 3.2c2.5 0 4.2 2.7 4.2 6.4s-1.7 6.4-4.2 6.4-4.2-2.7-4.2-6.4 1.7-6.4 4.2-6.4z" fill="#FF1B2D"/>
           </svg>
           <span data-i18n="ctaOpera">Instalar no Opera</span>
+          <span class="btn-badge" data-i18n="ctaReviewBadge">Em análise</span>
         </a>
       </div>
+      <p class="store-review-note" id="store-review-note" data-i18n="storeReviewNote">
+        A extensão já foi enviada para revisão nas lojas oficiais e estará disponível para download assim que cada loja aprovar.
+      </p>
     </section>
 
     <section class="grid">
@@ -600,6 +765,49 @@
         <h3 data-i18n="f6Title">Cupons opcionais</h3>
         <p data-i18n="f6Desc">Ative sugestões de cupons para lojas compatíveis quando quiser, sem poluir sua navegação.</p>
       </article>
+    </section>
+
+    <section id="videos-section">
+      <div class="section-heading">
+        <h2 data-i18n="videosTitle">Vídeos de demonstração</h2>
+        <p data-i18n="videosSub">Assista ao resumo rápido ou à apresentação completa passo a passo.</p>
+      </div>
+      <div class="videos-grid">
+        <article class="video-card">
+          <div class="video-embed" data-video-id="sOjnsBxLfQg">
+            <iframe
+              src="https://www.youtube.com/embed/sOjnsBxLfQg?rel=0"
+              title="VigiaMind — Demo rápida"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <span class="video-tag" data-i18n="vQuickTag">Demo rápida</span>
+            <h3 data-i18n="vQuickTitle">Visão geral em poucos segundos</h3>
+            <p data-i18n="vQuickDesc">Resumo direto mostrando como capturar preços e configurar alertas.</p>
+            <a class="video-ext-link" href="https://www.youtube.com/watch?v=sOjnsBxLfQg" target="_blank" rel="noopener noreferrer" data-i18n="watchOnYoutube">Assistir no YouTube ↗</a>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-embed" data-video-id="2awI4SYKPGw">
+            <iframe
+              src="https://www.youtube.com/embed/2awI4SYKPGw?rel=0"
+              title="VigiaMind — Demo completa"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <span class="video-tag" data-i18n="vFullTag">Demo completa</span>
+            <h3 data-i18n="vFullTitle">Apresentação passo a passo</h3>
+            <p data-i18n="vFullDesc">Tour completo com regras de alerta, cupons, abas, grupos, subgrupos, gráficos e dashboard.</p>
+            <a class="video-ext-link" href="https://www.youtube.com/watch?v=2awI4SYKPGw" target="_blank" rel="noopener noreferrer" data-i18n="watchOnYoutube">Assistir no YouTube ↗</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="gallery-section">
@@ -778,6 +986,17 @@
         ctaEdge: 'Instalar no Edge',
         ctaFirefox: 'Instalar no Firefox',
         ctaOpera: 'Instalar no Opera',
+        ctaReviewBadge: 'Em análise',
+        storeReviewNote: 'A extensão já foi enviada para revisão nas lojas oficiais e estará disponível para download assim que cada loja aprovar.',
+        videosTitle: 'Vídeos de demonstração',
+        videosSub: 'Assista ao resumo rápido ou à apresentação completa passo a passo.',
+        vQuickTag: 'Demo rápida',
+        vQuickTitle: 'Visão geral em poucos segundos',
+        vQuickDesc: 'Resumo direto mostrando como capturar preços e configurar alertas.',
+        vFullTag: 'Demo completa',
+        vFullTitle: 'Apresentação passo a passo',
+        vFullDesc: 'Tour completo com regras de alerta, cupons, abas, grupos, subgrupos, gráficos e dashboard.',
+        watchOnYoutube: 'Assistir no YouTube ↗',
         f1Title: 'Seleção visual com 1 clique',
         f1Desc: 'Clique em qualquer preço ou número na página e acompanhe aumentos, quedas ou metas exatas.',
         f2Title: 'Histórico e exportação CSV',
@@ -827,6 +1046,17 @@
         ctaEdge: 'Add to Edge',
         ctaFirefox: 'Add to Firefox',
         ctaOpera: 'Add to Opera',
+        ctaReviewBadge: 'In review',
+        storeReviewNote: 'Submitted to the official browser stores — downloads will unlock automatically as each store approves.',
+        videosTitle: 'Demo videos',
+        videosSub: 'Watch the quick overview or the complete step-by-step walkthrough.',
+        vQuickTag: 'Quick demo',
+        vQuickTitle: 'Quick feature overview',
+        vQuickDesc: 'A fast look at capturing prices and setting up alerts.',
+        vFullTag: 'Full demo',
+        vFullTitle: 'Step-by-step walkthrough',
+        vFullDesc: 'Complete tour covering alert rules, coupons, tabs, groups, subgroups, charts, and dashboard.',
+        watchOnYoutube: 'Watch on YouTube ↗',
         f1Title: '1-click visual selection',
         f1Desc: 'Click any price or number on a webpage and track increases, drops, or exact target values.',
         f2Title: 'Charts & CSV export',
@@ -901,6 +1131,61 @@
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
     });
+
+    function syncStoreButtonStates() {
+      const storeButtons = document.querySelectorAll('.cta-row a.btn');
+      let anyPending = false;
+      storeButtons.forEach((btn) => {
+        const href = (btn.getAttribute('href') || '').trim();
+        const isPending = !href || href.startsWith('#');
+        btn.classList.toggle('is-pending', isPending);
+        if (isPending) {
+          anyPending = true;
+          btn.setAttribute('aria-disabled', 'true');
+        } else {
+          btn.removeAttribute('aria-disabled');
+        }
+      });
+      const reviewNote = document.getElementById('store-review-note');
+      if (reviewNote) {
+        reviewNote.hidden = !anyPending;
+      }
+    }
+
+    document.querySelectorAll('.cta-row a.btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const href = (btn.getAttribute('href') || '').trim();
+        if (!href || href.startsWith('#')) {
+          e.preventDefault();
+        }
+      });
+    });
+
+    syncStoreButtonStates();
+
+    // When opened directly via file:// locally, browsers do not send HTTP Referer headers and YouTube throws Error 153.
+    // Show a clean clickable video thumbnail locally while keeping live embedded iframes on https:// (GitHub Pages).
+    if (window.location.protocol === 'file:') {
+      document.querySelectorAll('.video-embed[data-video-id]').forEach((box) => {
+        const videoId = box.getAttribute('data-video-id');
+        if (!videoId) return;
+        box.innerHTML = '';
+        const link = document.createElement('a');
+        link.className = 'video-fallback-poster';
+        link.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(videoId);
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = 'https://i.ytimg.com/vi/' + encodeURIComponent(videoId) + '/hqdefault.jpg';
+        img.alt = 'YouTube video preview';
+        const play = document.createElement('span');
+        play.className = 'video-play-btn';
+        play.setAttribute('aria-hidden', 'true');
+        link.appendChild(img);
+        link.appendChild(play);
+        box.appendChild(link);
+      });
+    }
 
     const urlLang = new URLSearchParams(window.location.search).get('lang');
     const browserLang = (navigator.language || '').toLowerCase();
